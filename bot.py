@@ -1,7 +1,7 @@
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, WebAppInfo
 from telegram.ext import ApplicationBuilder, CommandHandler
 
-BOT_TOKEN = "PUT_YOUR_TOKEN"
+BOT_TOKEN = "438559995:AAGZWfKogoS18YEs9uRXNXh3umVgECWZ3lg"
 
 GAME_URL = "https://username.github.io/repo-name/"
 
