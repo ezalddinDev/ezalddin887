@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Car Game</title>
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+
+  <style>
+    body { margin:0; background:#111; text-align:center; color:white; }
+    canvas { background:#222; display:block; margin:auto; }
+    button { padding:10px; margin:5px; }
+  </style>
+</head>
+
+<body>
+
+<h3>🚗 Car Game</h3>
+
+<canvas id="game" width="300" height="500"></canvas>
+
+<br>
+
+<button onclick="left()">⬅️</button>
+<button onclick="right()">➡️</button>
+
+<script>
+const tg = window.Telegram.WebApp;
+tg.expand();
+
+const canvas = document.getElementById("game");
+const ctx = canvas.getContext("2d");
+
+let car = { x: 140, y: 420 };
+let obs = { x: 100, y: 0 };
+let score = 0;
+
+function draw(){
+  ctx.clearRect(0,0,300,500);
+
+  // car
+  ctx.fillStyle="red";
+  ctx.fillRect(car.x, car.y, 30, 50);
+
+  // obstacle
+  ctx.fillStyle="yellow";
+  ctx.fillRect(obs.x, obs.y, 30, 30);
+
+  obs.y += 4;
+
+  if(obs.y > 500){
+    obs.y = 0;
+    obs.x = Math.random()*250;
+    score++;
+  }
+
+  requestAnimationFrame(draw);
+}
+
+function left(){ car.x -= 20; }
+function right(){ car.x += 20; }
+
+draw();
+</script>
+
+</body>
+</html>
